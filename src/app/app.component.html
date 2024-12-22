@@ -3,7 +3,7 @@
 
   <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-      <input #e type="text" (input)="addTodoTitle(e.value)"
+      <input #e type="text" id="inputField" (input)="addTodoTitle(e.value)"
         class="flex-1 border border-gray-300 rounded-full px-4 py-3 text-gray-700 focus:outline-none focus:ring focus:ring-blue-400"
         placeholder="Enter your task...">
 
@@ -39,7 +39,8 @@
     <div class="bg-gray-50 shadow-inner rounded-lg p-6">
       <h2 class="text-center text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
       <ul class="space-y-4">
-        <li class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-white rounded-lg shadow">
+        @if(todoTitle !== ""){
+        <li class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-yellow-200 rounded-lg shadow">
           <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{todoTitle}}</span>
 
           <span
@@ -60,13 +61,14 @@
         <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
 
           <button
-            class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
+            class="bg-gray-300 text-white px-4 py-2 rounded-full font-medium   focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
             Delete
           </button>
         </li>
+      }
         <li
          *ngFor="let item of tasks"
-         class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-white rounded-lg shadow">
+         class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-green-300 rounded-lg shadow">
           <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
 
           <span
@@ -86,7 +88,7 @@
 
         <input type="checkbox"  class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
 
-          <button
+          <button (click)="deleteTodo(item.id)"
             class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
             Delete
           </button>

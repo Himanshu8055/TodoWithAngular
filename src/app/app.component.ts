@@ -58,6 +58,9 @@ export class AppComponent {
       completed: this.isCompleted
     }
 
+    const inputElement = document.getElementById('inputField') as HTMLInputElement;
+    inputElement.value = '';
+
     this.tasks.push(newTask);
     this.todoTitle = "";
     this.priority = "Low";
@@ -67,6 +70,10 @@ export class AppComponent {
     console.log(this.tasks);
     
     return;
+  }
+
+  deleteTodo(id:number){
+    this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
 
