@@ -22,7 +22,7 @@ export class AppComponent {
   isChecked:boolean = false;
   tasks: Task[] = [
     { id: 1, title: 'Fix bugs', priority: 'High', completed: false, type: 'Personal' },
-    { id: 2, title: 'Prepare report', priority: 'Medium', completed: false, type: 'Personal' },
+    { id: 2, title: 'Prepare report', priority: 'Medium', completed: false, type: 'Work' },
     { id: 3, title: 'Team meeting', priority: 'Low', completed: false, type: 'Personal' }
   ];
 
@@ -85,7 +85,9 @@ export class AppComponent {
 
   get filteredTasks() {
     return this.tasks.filter((task) =>
-      task.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      task.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      task.type.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      task.priority.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
 
