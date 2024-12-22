@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 // import { RouterOutlet } from '@angular/router';
 
@@ -12,14 +13,15 @@ interface Task {
 
 @Component({
   selector: 'app-root',
-  imports: [ CommonModule ],
+  imports: [ CommonModule, FormsModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Todo List';
-
+  isChecked:boolean = false;
   tasks: Task[] = [];
+  done = ""
 
   todoTitle = "";
   priority = "Low";
@@ -70,6 +72,14 @@ export class AppComponent {
     console.log(this.tasks);
     
     return;
+  }
+
+  doneTask(){
+    if(this.isChecked){
+      this.done = "line-through";
+    }else{
+      this.done = "";
+    }
   }
 
   deleteTodo(id:number){
