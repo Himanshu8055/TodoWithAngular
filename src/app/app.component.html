@@ -28,6 +28,7 @@
       </div>
 
       <button
+        (click)="addTask()"
         class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 transition-all">
         Add Task
       </button>
@@ -57,6 +58,33 @@
         </span>
 
         <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
+
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
+            Delete
+          </button>
+        </li>
+        <li
+         *ngFor="let item of tasks"
+         class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-white rounded-lg shadow">
+          <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
+
+          <span
+            class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+            <!-- <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option> -->
+            {{item.priority}}
+          </span>
+
+          <span
+            class="rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+            {{item.type}}
+            <!-- <option value="Personal">Personal</option>
+            <option value="Work">Work</option> -->
+        </span>
+
+        <input type="checkbox"  class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
 
           <button
             class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">

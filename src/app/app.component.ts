@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 // import { RouterOutlet } from '@angular/router';
 
 interface Task {
@@ -11,7 +12,7 @@ interface Task {
 
 @Component({
   selector: 'app-root',
-  // imports: [RouterOutlet],
+  imports: [ CommonModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -42,6 +43,30 @@ export class AppComponent {
     console.log(type);
     
     this.type=type
+  }
+
+  addTask(){
+    if (this.todoTitle === "") {
+      alert("Please enter a task title");
+      return;
+    }
+    const newTask: Task = {
+      id: this.tasks.length + 1,
+      title: this.todoTitle,
+      priority: this.priority,
+      type: this.type,
+      completed: this.isCompleted
+    }
+
+    this.tasks.push(newTask);
+    this.todoTitle = "";
+    this.priority = "Low";
+    this.type = "Personal";
+    this.isCompleted = false;
+
+    console.log(this.tasks);
+    
+    return;
   }
 
 
