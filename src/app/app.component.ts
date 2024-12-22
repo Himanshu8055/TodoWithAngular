@@ -22,7 +22,7 @@ export class AppComponent {
   isChecked:boolean = false;
   tasks: Task[] = [
     { id: 1, title: 'Fix bugs', priority: 'High', completed: false, type: 'Personal' },
-    { id: 2, title: 'Prepare report', priority: 'Medium', completed: true, type: 'Personal' },
+    { id: 2, title: 'Prepare report', priority: 'Medium', completed: false, type: 'Personal' },
     { id: 3, title: 'Team meeting', priority: 'Low', completed: false, type: 'Personal' }
   ];
 
@@ -30,6 +30,8 @@ export class AppComponent {
   priority = "Low";
   type = "Personal";
   completed = false;
+
+  searchQuery: string = '';
 
   addTodoTitle(value:string) {
     console.log(value)
@@ -79,6 +81,12 @@ export class AppComponent {
 
   deleteTodo(id:number){
     this.tasks = this.tasks.filter(task => task.id !== id);
+  }
+
+  get filteredTasks() {
+    return this.tasks.filter((task) =>
+      task.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 
 

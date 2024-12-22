@@ -37,8 +37,8 @@
 
     <div class="bg-gray-50 shadow-inner rounded-lg p-6">
       <div class="grid grid-cols-4 gap-4">
-        <h2 class="col-span-2 text-center inline-block text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
-        <input
+        <h2 class="col-span-2 inline-block text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
+        <input [(ngModel)]="searchQuery"
           class="mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
           type="search" placeholder="Search...">
         <select
@@ -72,6 +72,8 @@
           </button>
         </li>
         }
+        
+        @if(searchQuery === ''){
         <li *ngFor="let item of tasks"
           class="grid grid-cols-12 items-center justify-between gap-2 p-4 bg-green-300 rounded-lg shadow">
           <span
@@ -97,6 +99,33 @@
             Delete
           </button>
         </li>
+      } @else{
+        <li *ngFor="let item of filteredTasks"
+        class="grid grid-cols-12 items-center justify-between gap-2 p-4 bg-green-300 rounded-lg shadow">
+        <span
+        [class.line-through]="item.completed"
+          class="sm:col-span-5 col-span-12 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
+
+        <span
+          class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-3 truncate">
+          {{item.priority}}
+        </span>
+
+        <span
+          class="rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+          {{item.type}}
+        </span>
+
+        <input type="checkbox" [checked]="item.completed"
+        (change)="item.completed = !item.completed"
+          class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
+
+        <button (click)="deleteTodo(item.id)"
+          class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4 ml-2">
+          Delete
+        </button>
+      </li>
+      }
       </ul>
     </div>
   </div>
