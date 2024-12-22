@@ -41,7 +41,7 @@
       <ul class="space-y-4">
         @if(todoTitle !== ""){
         <li class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-yellow-200 rounded-lg shadow">
-          <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{todoTitle}}</span>
+          <span class="sm:col-span-6 col-span-12 text-lg font-medium text-gray-700 truncate">{{todoTitle}}</span>
 
           <span
             class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
@@ -58,7 +58,7 @@
             <option value="Work">Work</option> -->
         </span>
 
-        <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
+        <!-- <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1"> -->
 
           <button
             class="bg-gray-300 text-white px-4 py-2 rounded-full font-medium   focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
@@ -68,11 +68,11 @@
       }
         <li
          *ngFor="let item of tasks"
-         class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-green-300 rounded-lg shadow">
-          <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
+         class="grid grid-cols-12 items-center justify-between gap-2 p-4 bg-green-300 rounded-lg shadow">
+          <span class="sm:col-span-5 col-span-12 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
 
           <span
-            class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+            class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-3 truncate">
             <!-- <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option> -->
@@ -89,7 +89,7 @@
         <input type="checkbox"  class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
 
           <button (click)="deleteTodo(item.id)"
-            class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
+            class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4 ml-2">
             Delete
           </button>
         </li>
