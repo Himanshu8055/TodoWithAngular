@@ -20,13 +20,16 @@ interface Task {
 export class AppComponent {
   title = 'Todo List';
   isChecked:boolean = false;
-  tasks: Task[] = [];
-  done = ""
+  tasks: Task[] = [
+    { id: 1, title: 'Fix bugs', priority: 'High', completed: false, type: 'Personal' },
+    { id: 2, title: 'Prepare report', priority: 'Medium', completed: true, type: 'Personal' },
+    { id: 3, title: 'Team meeting', priority: 'Low', completed: false, type: 'Personal' }
+  ];
 
   todoTitle = "";
   priority = "Low";
   type = "Personal";
-  isCompleted = false;
+  completed = false;
 
   addTodoTitle(value:string) {
     console.log(value)
@@ -57,7 +60,7 @@ export class AppComponent {
       title: this.todoTitle,
       priority: this.priority,
       type: this.type,
-      completed: this.isCompleted
+      completed: this.completed
     }
 
     const inputElement = document.getElementById('inputField') as HTMLInputElement;
@@ -67,19 +70,11 @@ export class AppComponent {
     this.todoTitle = "";
     this.priority = "Low";
     this.type = "Personal";
-    this.isCompleted = false;
+    this.completed = false;
 
     console.log(this.tasks);
     
     return;
-  }
-
-  doneTask(){
-    if(this.isChecked){
-      this.done = "line-through";
-    }else{
-      this.done = "";
-    }
   }
 
   deleteTodo(id:number){

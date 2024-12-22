@@ -36,7 +36,21 @@
 
 
     <div class="bg-gray-50 shadow-inner rounded-lg p-6">
-      <h2 class="text-center text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
+      <div class="grid grid-cols-4 gap-4">
+        <h2 class="col-span-2 text-center inline-block text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
+        <input
+          class="mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
+          type="search" placeholder="Search...">
+        <select
+          class="mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
+          name="allCategory" id="allCatgory">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </div>
       <ul class="space-y-4">
         @if(todoTitle !== ""){
         <li class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-yellow-200 rounded-lg shadow">
@@ -44,20 +58,13 @@
 
           <span
             class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
-            <!-- <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option> -->
             {{priority}}
           </span>
 
           <span
             class="rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
             {{type}}
-            <!-- <option value="Personal">Personal</option>
-            <option value="Work">Work</option> -->
           </span>
-
-          <!-- <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1"> -->
 
           <button
             class="bg-gray-300 text-white px-4 py-2 rounded-full font-medium   focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
@@ -68,24 +75,21 @@
         <li *ngFor="let item of tasks"
           class="grid grid-cols-12 items-center justify-between gap-2 p-4 bg-green-300 rounded-lg shadow">
           <span
-            class="{{done}} sm:col-span-5 col-span-12 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
+          [class.line-through]="item.completed"
+            class="sm:col-span-5 col-span-12 text-lg font-medium text-gray-700 truncate">{{item.title}}</span>
 
           <span
             class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-3 truncate">
-            <!-- <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option> -->
             {{item.priority}}
           </span>
 
           <span
             class="rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
             {{item.type}}
-            <!-- <option value="Personal">Personal</option>
-            <option value="Work">Work</option> -->
           </span>
 
-          <input type="checkbox" [(ngModel)]="isChecked" (change)="doneTask()"
+          <input type="checkbox" [checked]="item.completed"
+          (change)="item.completed = !item.completed"
             class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
 
           <button (click)="deleteTodo(item.id)"
