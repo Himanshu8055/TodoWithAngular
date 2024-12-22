@@ -1,0 +1,69 @@
+<div class="min-h-screen bg-gradient-to-r from-blue-300 to-blue-500 p-6 font-sans">
+  <h1 class="text-center text-5xl font-extrabold text-white py-4">{{title}}</h1>
+
+  <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+      <input #e type="text" (input)="addTodoTitle(e.value)"
+        class="flex-1 border border-gray-300 rounded-full px-4 py-3 text-gray-700 focus:outline-none focus:ring focus:ring-blue-400"
+        placeholder="Enter your task...">
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <div>
+          <label for="priority" class="font-semibold text-gray-700">Priority: </label>
+          <select (input)="addTodoPriority($event)"
+            class="border border-gray-300 rounded-full px-2 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-400">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div>
+          <label for="category" class="font-semibold text-gray-700">Type: </label>
+          <select (input)="addTodoType($event)"
+            class="border border-gray-300 rounded-full px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-400">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
+      </div>
+
+      <button
+        class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 transition-all">
+        Add Task
+      </button>
+    </div>
+
+
+
+    <div class="bg-gray-50 shadow-inner rounded-lg p-6">
+      <h2 class="text-center text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
+      <ul class="space-y-4">
+        <li class="grid grid-cols-12 items-center justify-between gap-4 p-4 bg-white rounded-lg shadow">
+          <span class="sm:col-span-5 col-span-11 text-lg font-medium text-gray-700 truncate">{{todoTitle}}</span>
+
+          <span
+            class=" rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+            <!-- <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option> -->
+            {{priority}}
+          </span>
+
+          <span
+            class="rounded-full px-2 text-center py-1 bg-gray-300 focus:outline-none focus:ring focus:ring-blue-400 sm:col-span-2 col-span-4 truncate">
+            {{type}}
+            <!-- <option value="Personal">Personal</option>
+            <option value="Work">Work</option> -->
+        </span>
+
+        <input type="checkbox" class="w-6 h-6 text-blue-600 focus:ring focus:ring-blue-400 sm:col-span-1 col-span-1">
+
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-300 transition-all sm:col-span-2 col-span-4">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
