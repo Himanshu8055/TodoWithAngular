@@ -20,11 +20,7 @@ interface Task {
 export class AppComponent {
   title = 'Todo List';
   isChecked:boolean = false;
-  tasks: Task[] = [
-    { id: 1, title: 'Fix bugs', priority: 'High', completed: false, type: 'Personal' },
-    { id: 2, title: 'Prepare report', priority: 'Medium', completed: false, type: 'Work' },
-    { id: 3, title: 'Team meeting', priority: 'Low', completed: false, type: 'Personal' }
-  ];
+  tasks: Task[] = [];
 
   todoTitle = "";
   priority = "Low";
