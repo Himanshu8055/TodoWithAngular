@@ -4,31 +4,31 @@
   <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl mx-auto">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
       <input #e type="text" id="inputField" (input)="addTodoTitle(e.value)"
-        class="flex-1 border border-gray-300 rounded-full px-4 py-3 text-gray-700 focus:outline-none focus:ring focus:ring-blue-400"
+        class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-gray-700 focus:outline-none focus:ring focus:ring-blue-400"
         placeholder="Enter your task...">
 
       <div class="flex flex-wrap items-center justify-center gap-4">
         <div>
-          <label for="priority" class="font-semibold text-gray-700">Priority: </label>
           <select (input)="addTodoPriority($event)"
-            class="border border-gray-300 rounded-full px-2 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-400">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
+            class="border border-gray-300 rounded-full px-1 py-1 bg-white focus:outline-none focus:ring focus:ring-blue-400">
+            <option class="text-center" value="" disabled selected>Priority</option>
+            <option class="text-center" value="Low">Low</option>
+            <option class="text-center" value="Medium">Medium</option>
+            <option class="text-center" value="High">High</option>
           </select>
         </div>
         <div>
-          <label for="category" class="font-semibold text-gray-700">Type: </label>
           <select (input)="addTodoType($event)"
-            class="border border-gray-300 rounded-full px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-400">
-            <option value="Personal">Personal</option>
-            <option value="Work">Work</option>
+            class="border border-gray-300 rounded-full px-3 py-1 bg-white focus:outline-none focus:ring focus:ring-blue-400">
+            <option class="text-center" value="" disabled selected>Type</option>
+            <option class="text-center" value="Personal">Personal</option>
+            <option class="text-center" value="Work">Work</option>
           </select>
         </div>
       </div>
 
       <button (click)="addTask()"
-        class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 transition-all">
+        class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-400 transition-all">
         Add Task
       </button>
     </div>
@@ -36,20 +36,20 @@
 
 
     <div class="bg-gray-50 shadow-inner rounded-lg p-6">
-      <div class="grid grid-cols-4 gap-4">
-        <h2 class="col-span-2 inline-block text-3xl font-semibold text-gray-800 mb-4">Task List</h2>
+      <div class="grid grid-cols-12 gap-2">
+        <h2 class="col-span-4 sm:col-span-6 inline-block text-2xl font-semibold text-gray-800 mb-4">Task List</h2>
         <input [(ngModel)]="searchQuery"
-          class="mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
+          class="col-span-4 sm:col-span-3 mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
           type="search" placeholder="Search...">
         <select [(ngModel)]="searchQuery"
-          class="mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
+          class="col-span-4 sm:col-span-3 mb-4 text-xs sm:text-lg border border-gray-300 rounded-full px-3 bg-white focus:outline-none focus:ring focus:ring-blue-400"
           name="allCategory" id="allCatgory">
-          <option value="" disabled selected>Short By...</option>
-          <option value="Personal">Personal</option>
-          <option value="Work">Work</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+          <option class="text-center" value="" disabled selected>Short By...</option>
+          <option class="text-center" value="Personal">Personal</option>
+          <option class="text-center" value="Work">Work</option>
+          <option class="text-center" value="Low">Low</option>
+          <option class="text-center" value="Medium">Medium</option>
+          <option class="text-center" value="High">High</option>
         </select>
       </div>
       <ul class="space-y-4">

@@ -23,8 +23,8 @@ export class AppComponent {
   tasks: Task[] = [];
 
   todoTitle = "";
-  priority = "Low";
-  type = "Personal";
+  priority = "none";
+  type = "none";
   completed = false;
 
   searchQuery: string = '';
@@ -66,8 +66,6 @@ export class AppComponent {
 
     this.tasks.push(newTask);
     this.todoTitle = "";
-    this.priority = "Low";
-    this.type = "Personal";
     this.completed = false;
 
     console.log(this.tasks);
